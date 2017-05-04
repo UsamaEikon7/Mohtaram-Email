@@ -1,0 +1,548 @@
+<head>
+<meta name="viewport" content="width=device-width" /><!-- IMPORTANT -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Order Confirmed</title>
+	
+<!-- <link rel="stylesheet" type="text/css" href="stylesheets/email.css" /> -->
+<style>
+	/* ------------------------------------- 
+			GLOBAL 
+	------------------------------------- */
+	* { 
+		margin:0;
+		padding:0;
+	}
+	* { font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+	
+	img { 
+		max-width: 100%; 
+	}
+	.collapse {
+		margin:0;
+		padding:0;
+	}
+	body {
+		-webkit-font-smoothing:antialiased; 
+		-webkit-text-size-adjust:none; 
+		width: 100%!important; 
+		height: 100%;
+	}
+	
+	
+	/* ------------------------------------- 
+			ELEMENTS 
+	------------------------------------- */
+	a { color: #2BA6CB;}
+	
+	.btn {
+		text-decoration:none;
+		color:#FFF;
+		background-color:#666;
+		width:80%;
+		padding:15px 10%;
+		font-weight:bold;
+		text-align:center;
+		cursor:pointer;
+		display:inline-block;
+	}
+	
+	p.callout {
+		padding:15px;
+		text-align:center;
+		background-color:#ECF8FF;
+		margin-bottom: 15px;
+	}
+	.callout a {
+		font-weight:bold;
+		color: #2BA6CB;
+	}
+	
+	.column table { width:100%;}
+	.column {
+		width: 300px;
+		float:left;
+	}
+	.column tr td { padding: 15px; }
+	.column-wrap { 
+		padding:0!important; 
+		margin:0 auto; 
+		max-width:600px!important;
+	}
+	.columns .column {
+		min-width: auto;
+		float:left;
+	}
+	table.columns, table.column, .columns .column tr, .columns .column td {
+		padding:0;
+		margin:0;
+		border:0;
+		border-collapse:collapse;
+	}
+	
+	/* ------------------------------------- 
+			HEADER 
+	------------------------------------- */
+	table.head-wrap { width: 100%;}
+	
+	.header.container table td.logo { padding: 15px; }
+	.header.container table td.label { padding: 15px; padding-left:0px;}
+	
+	
+	/* ------------------------------------- 
+			BODY 
+	------------------------------------- */
+	table.body-wrap { width: 100%;background: #eee;}
+	
+	
+	/* ------------------------------------- 
+			FOOTER 
+	------------------------------------- */
+	table.footer-wrap { width: 100%;	clear:both!important;
+	}
+	.footer-wrap .container td.content  p { border-top: 1px solid rgb(215,215,215); padding-top:15px;}
+	.footer-wrap .container td.content p {
+		font-size:10px;
+		font-weight: bold;
+		
+	}
+	
+	
+	/* ------------------------------------- 
+			TYPOGRAPHY 
+	------------------------------------- */
+	h1,h2,h3,h4,h5,h6 {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; line-height: 1.1; margin-bottom:15px; color:#2b2b2b;
+	}
+	h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
+	
+	h1 { font-weight:200; font-size: 44px;}
+	h2 { font-weight:200; font-size: 37px;}
+	h3 { font-weight:500; font-size: 27px;}
+	h4 { font-weight:500; font-size: 23px;}
+	h5 { font-size: 15px;}
+	h6 { font-weight:900; font-size: 14px; text-transform: uppercase; color:#444;}
+	
+	.collapse { margin:0!important;}
+	
+	p, ul { 
+		margin-bottom: 10px; 
+		font-weight: normal; 
+		font-size:16px; 
+		line-height:1.6;
+	}
+	p.lead { font-size:17px; }
+	p.last { margin-bottom:0px;}
+	
+	ul li {
+		margin-left:5px;
+		list-style-position: inside;
+	}
+	
+	hr {
+	    border: 0;
+	    height: 0;
+	    border-top: 1px dotted rgba(0, 0, 0, 0.1);
+	    border-bottom: 1px dotted rgba(255, 255, 255, 0.3);
+	}
+	
+	
+	/* ------------------------------------- 
+			Shopify
+	------------------------------------- */
+	.products {
+		width:100%;
+		height:40px;
+		margin:10px 0 10px 0;
+	}
+	.products img {
+		float:left;
+		height:40px;
+		width:auto;
+		margin-right:20px;
+	}
+	.products span {
+		font-size:17px;
+	}
+	
+	
+	/* --------------------------------------------------- 
+			RESPONSIVENESS
+			Nuke it from orbit. It's the only way to be sure. 
+	------------------------------------------------------ */
+	
+	/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+	.container {
+		display:block!important;
+		max-width:700px!important;
+		margin:0 auto!important; /* makes it centered */
+		clear:both!important;
+	}
+	
+	/* This should also be a block element, so that it will fill 100% of the .container */
+	.content {
+		padding:15px;
+		
+		margin:0 auto;
+		display:block; 
+	}
+	
+	/* Let's make sure tables in the content area are 100% wide */
+	.content table { width: 100%; }
+	
+	/* Be sure to place a .clear element after each set of columns, just to be safe */
+	.clear { display: block; clear: both; }
+	
+	
+	/* ------------------------------------------- 
+			PHONE
+			For clients that support media queries.
+			Nothing fancy. 
+	-------------------------------------------- */
+	@media only screen and (max-width: 600px) {
+		
+		a[class="btn"] { display:block!important; margin-bottom:10px!important; background-image:none!important; margin-right:0!important;}
+	
+		div[class="column"] { width: auto!important; float:none!important;}
+		
+		table.social div[class="column"] {
+			width:auto!important;
+		}
+	
+	}
+</style>
+
+</head>
+ 
+<body style="background-color: #eee;">
+
+<!-- HEADER -->
+	<table class="head-wrap">
+		<tr>			
+			<td class="header container" style="background:#2b2d2c;">	
+				<div class="content">
+					<table >
+						<tr>
+							<td>
+								<a href="http://www.mohtaram.com/" title="Mohtaram" alt="Mohtaram" /><img src="http://www.mohtaram.com/image/catalog/logo.png" style="width:100px;height:auto;" /></a>
+							</td>
+							<td align="left">
+								<h2 style="color:#eee">Mohtaram</h2>	
+							</td>
+						</tr>
+					</table>
+				</div>				
+			</td>			
+		</tr>
+	</table>
+
+	<table class="body-wrap">
+		<tr>
+			<td></td>
+			<td class="container" bgcolor="#FFFFFF">
+				<div class="content">
+					<table>
+						<tr>
+							<td>						
+								<!-- You may like to include a Hero Image -->
+								<p><img src="http://demo.eikon7.com/misbahi/image/catalog/mail_image_mohtaram.jpg" alt="" /></p>
+								<!-- /Hero Image -->
+								<h3  style="font-size:34px;color:#dec57f;padding-top:30px;padding-bottom:0px;padding-left:40px;padding-right:40px">Thanks for your order, Awais.</h3>
+								<br/>
+								<p style="padding-top:0px;padding-bottom:0px;padding-left:40px;padding-right:40px">Thank you for placing your order with Mohtaram. This email is to confirm your order has been placed successfully, and will be processed & shipped to you soon.</p>
+								<br/>
+							</td>
+						</tr>
+					</table>
+					
+					<table>
+						<tr>
+							<td bgcolor="#ffffff" style="padding-left:0px;padding-bottom:30px;padding-top:15px">        
+								<table border="0" cellspacing="0" cellpadding="0" align="left">
+								<tbody><tr>
+								<td style="padding-top:0px;padding-bottom:0px;padding-left:40px;padding-right:40px"><a href="#" style="border-radius:3px;color:#dec57f;text-decoration:none;background-color:#dec57f;border-top:14px solid #dec57f;border-bottom:14px solid #dec57f;border-left:14px solid #dec57f;border-right:14px solid #dec57f;display:inline-block;border-radius:3px" target="_blank" data-saferedirecturl="#"><font  color="#FFFFFF" style="font-size:18px;line-height:22px">View Your Shoping Cart</font></a></td>
+								</tr>
+								</tbody></table>
+							</td>
+						</tr>
+					</table>	
+					
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#e8e8e8">
+						<tbody><tr>
+							<td align="center" valign="top" ><table width="600" border="0" cellpadding="0" cellspacing="0" class="m_1004908185268358371m_6378534220193369753m_1844069072656209746mobemailfullwidth" align="center" bgcolor="#ffffff">
+								<tbody><tr>
+									<td style="padding-top:0px;padding-bottom:0px;padding-left:40px;padding-right:40px"><table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+									<tbody><tr>
+										<td valign="middle" align="left" style="padding-right:0px;padding-left:0px;padding-top:40px;padding-bottom:10px;line-height:26px;font-size:20px;border-top-color:#999999;border-top-width:1px;border-top-style:solid"><font style="font-size:20px;line-height:26px" face="'Boing-Bold', 'Arial Black', Arial, sans-serif" color="#dec57f">Shipping Detalis:
+									</font></td>
+								  </tr>          
+								</tbody></table></td>
+							  </tr>
+							</tbody></table></td>
+						  </tr>
+						</tbody>
+					</table>
+					
+					<table class="columns" width="100%">
+						<tr>
+							<td style="padding-top:0px;padding-bottom:0px;padding-left:40px;padding-right:40px">
+								<table align="left" class="column" >
+									<tr>
+										<td>				
+											<h5 class="">Shipping address</h5>
+											<p class="">
+											<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAflBMVEUAAABUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxwhbgHAAAAKXRSTlMAAQUGCAoLDA0aNjg7PEZHT1RVVnGOmJqdnqCio6qrsLW8vtna3vP1+7jeURIAAABnSURBVAgdVcGHGoFgAEDRGxnZISub0n3/F/TlzzqHl/G1vIz4yLTQjMbQQ4v20QHB2RiIPRE8CmpFSXCvIiCqbgR7UyA1J5jqarbWCUHXoENja23DW2It4SNXd3z11R4/Fs75syR4AheWCjJq53MTAAAAAElFTkSuQmCC">
+											House No 1111, Street No 222, Islamabad, Pakistan<br/>
+											<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAS1BMVEUAAABUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGyimuFIAAAAGHRSTlMAAQUJLTY5QkddY4WUo7C+x9PV1+jz+/0VaKnVAAAAXklEQVQIHVXBBxaDIBRFwffBXklsd/8rNZGj4Iwk00tPp0wNu1cSgEHJBiymxwizU1JCoYytBFOmgVa5CSr9mCL3hdbklsHr4j8Qihn2Thc3ER2mqFn563WzctxCLZ0V5QV26PP73gAAAABJRU5ErkJggg==">
+											+92 333 1231231<br/>
+											</p>
+										</td>
+									</tr>
+								</table>
+								
+								<table align="right" class="column">
+									<tr>
+										<td>											
+											<h5 class="">Payment Detalis</h5>								
+											<p class="">
+											<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAflBMVEUAAABUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxwhbgHAAAAKXRSTlMAAQUGCAoLDA0aNjg7PEZHT1RVVnGOmJqdnqCio6qrsLW8vtna3vP1+7jeURIAAABnSURBVAgdVcGHGoFgAEDRGxnZISub0n3/F/TlzzqHl/G1vIz4yLTQjMbQQ4v20QHB2RiIPRE8CmpFSXCvIiCqbgR7UyA1J5jqarbWCUHXoENja23DW2It4SNXd3z11R4/Fs75syR4AheWCjJq53MTAAAAAElFTkSuQmCC">
+											House No 1111, Street No 222, Islamabad, Pakistan<br/>
+											<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAS1BMVEUAAABUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGxUYGyimuFIAAAAGHRSTlMAAQUJLTY5QkddY4WUo7C+x9PV1+jz+/0VaKnVAAAAXklEQVQIHVXBBxaDIBRFwffBXklsd/8rNZGj4Iwk00tPp0wNu1cSgEHJBiymxwizU1JCoYytBFOmgVa5CSr9mCL3hdbklsHr4j8Qihn2Thc3ER2mqFn563WzctxCLZ0V5QV26PP73gAAAABJRU5ErkJggg==">
+											+92 333 1231231<br/>
+											</p>
+										</td>
+									</tr>
+								</table> 
+								<span class="clear"></span>	
+							</td>
+						</tr>
+					</table>
+					
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#e8e8e8">
+						<tbody>
+							<tr>
+								<td align="center" valign="top" >
+									<table width="600" border="0" cellpadding="0" cellspacing="0" class="m_1004908185268358371m_6378534220193369753m_1844069072656209746mobemailfullwidth" align="center" bgcolor="#ffffff">
+										<tbody>
+											<tr>
+												<td style="padding-top:0px;padding-bottom:0px;padding-left:40px;padding-right:40px">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+														<tbody>
+															<tr>
+																<td valign="middle" align="left" style="padding-right:0px;padding-left:0px;padding-top:40px;padding-bottom:10px;line-height:26px;font-size:20px;border-top-color:#999999;border-top-width:1px;border-top-style:solid">
+																	<font style="font-size:20px;line-height:26px" face="'Boing-Bold', 'Arial Black', Arial, sans-serif" color="#dec57f">Your order detalis:
+																	</font>
+																</td>
+															</tr>          
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#e8e8e8">  
+						<tbody>
+							<tr>
+								<td align="center" valign="top" >
+									<table width="600" border="0" cellpadding="0" cellspacing="0" class="m_1004908185268358371m_6378534220193369753m_1844069072656209746mobemailfullwidth" align="center">
+										<tbody>
+											<tr>
+												<td style="padding-top:0px;padding-bottom:0px;padding-left:0px;padding-right:0px">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+														<tbody>
+															<tr>
+																<td valign="middle" align="left" style="padding-right:40px;padding-left:40px;padding-top:0px;padding-bottom:0px;line-height:21px;font-size:14px">
+																	<font style="font-size:14px;line-height:21px" face="Arial, sans-serif" color="#2b2b2b">
+																		Order Number: 0000
+																	</font>
+																</td>
+															</tr>                    
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#e8e8e8">
+						<tbody>
+							<tr>
+								<td align="center" valign="top" ><table border="0" cellpadding="0" cellspacing="0" class="m_1004908185268358371m_6378534220193369753m_1844069072656209746mobemailfullwidth" align="center" bgcolor="#ffffff">    
+									<tbody>
+										<tr>
+											<td style="padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+													<tbody>
+														<tr>				
+															<td valign="top" align="center" bgcolor="#ffffff" style="padding-right:0px;padding-left:0px;padding-top:20px;padding-bottom:20px">
+																<font style="font-size:14px;line-height:21px" face="Arial, sans-serif" color="#2b2b2b">
+																	<table style="table-layout:fixed;border-collapse:collapse" cellspacing="0" cellpadding="0" border="0">
+																		<tbody>
+																			<tr>
+																				<td bgcolor="#c0c0c0" style="padding-top:6px;padding-bottom:6px;border-collapse:collapse;border-left:1px solid #cccccc;border-top:1px solid #cccccc;border-bottom:1px solid #cccccc;" align="center" valign="middle">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;font-size:14px;color:#ffffff">
+																						Product
+																					  </div>
+																				</td>
+																				<td bgcolor="#c0c0c0" style="border-collapse:collapse;border-left:1px solid #cccccc;border-top:1px solid #cccccc;border-bottom:1px solid #cccccc;" align="center" valign="middle">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-size:14px;font-family:Arial,sans-serif;color:#ffffff">
+																						Quantity
+																					  </div>
+																				</td>		
+																				<td bgcolor="#c0c0c0" style="border-collapse:collapse;border:1px solid #cccccc;" align="center" valign="middle">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-size:14px;font-family:Arial,sans-serif;color:#ffffff">
+																						Price
+																					  </div>
+																				</td>
+																			</tr>
+																			<tr style="width:100%">
+																				<td style="padding:6px 6px 6px 18px;border-collapse:collapse;border-left:1px solid #cccccc;border-bottom:1px solid #cccccc;width:294px;vertical-align:top">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;font-size:14px">
+																					  Zalmi Shirt
+																				   </div>
+																				</td>
+																				<td style="padding-top:6px;border-collapse:collapse;border-left:1px solid #cccccc;border-bottom:1px solid #cccccc;width:98px;vertical-align:top" align="center">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;font-size:14px">
+																							1
+																						  </div>
+																				</td>
+																				
+																				<td style="padding-left:10px;padding-right:10px;padding-top:6px;padding-bottom:2px;text-align:right;vertical-align:top;border-collapse:collapse;border-left:1px solid #cccccc;border-right:1px solid #cccccc;border-bottom:1px solid #cccccc;">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;font-size:14px">
+																						  ₨1,071
+																						</div>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td colspan="2" bgcolor="#f5f5f5" align="right" style="padding-top:6px;border-collapse:collapse;border-left:1px solid #cccccc;text-align:right;vertical-align:top">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;font-size:14px;color:#666666">
+																						Subtotal:
+																					  </div>
+																				</td>
+																				<td align="right" bgcolor="#f5f5f5" style="padding-top:6px;padding-right:10px;border-collapse:collapse;border-right:1px solid #cccccc;text-align:right;vertical-align:top">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;font-size:14px;color:#666666">
+																						₨1,071
+																					  </div>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td colspan="2" align="right" bgcolor="#f5f5f5" style="padding-top:6px;padding-bottom:6px;border-collapse:collapse;border-left:1px solid #cccccc;text-align:right;vertical-align:top">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;font-size:14px;color:#666666">
+																							Tax:
+																						  </div>
+																				</td>
+																				<td align="right"  bgcolor="#f5f5f5" style="padding-top:6px;padding-bottom:6px;padding-right:10px;border-collapse:collapse;border-right:1px solid #cccccc;text-align:right;vertical-align:top">
+																				  <div style="width:100%;height:100%;overflow:hidden;font-family:Arial,sans-serif;font-size:14px;color:#666666">
+																							₨0
+																						  </div>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td colspan="2" bgcolor="#f5f5f5" style="padding-top:6px;padding-bottom:6px;border-collapse:collapse;border-top:1px solid #cccccc;border-left:1px solid #cccccc;border-bottom:1px solid #cccccc;text-align:right;vertical-align:top;height:40px">
+																					<div style="height:100%;overflow:hidden">
+																						<font style="font-family:Arial,sans-serif;font-size:14px;color:#666666">
+																						  Total:
+																						</font>
+																					</div>
+																				</td>
+																				<td bgcolor="#f5f5f5"  style="padding-top:6px;padding-right:10px;padding-bottom:6px;border-collapse:collapse;border-top:1px solid #cccccc;border-right:1px solid #cccccc;border-bottom:1px solid #cccccc;text-align:right;vertical-align:top;height:40px">
+																					<div style="height:100%;overflow:hidden">
+																						<font style="font-family:Arial,sans-serif;font-size:18px;color:#7db701">
+																						  ₨1,071
+																						</font>
+																					</div>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</font>
+															</td>
+														</tr>         
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#e8e8e8">
+					<tbody>
+						<tr>
+							<td align="center" valign="top" >
+								<table width="600" border="0" cellpadding="0" cellspacing="0" class="m_1004908185268358371m_6378534220193369753m_1844069072656209746mobemailfullwidth" align="center">
+									<tbody>
+										<tr>
+											<td bgcolor="#ffffff" valign="middle" align="left" style="padding-right:0px;padding-left:40px;padding-top:0px;padding-bottom:40px">
+												<table border="0" cellspacing="0" cellpadding="0" align="left">
+													<tbody>
+														<tr>
+															<td >
+																<a href="#" style="border-radius:3px;color:#dec57f;text-decoration:none;background-color:#dec57f;border-top:14px solid #dec57f;border-bottom:14px solid #dec57f;border-left:14px solid #dec57f;border-right:14px solid #dec57f;display:inline-block;border-radius:3px" target="_blank" data-saferedirecturl="#">
+																	<font face="'Boing-Bold', 'Arial Black', Arial, sans-serif" color="#FFFFFF" style="font-size:18px;line-height:22px">Visit Mohtaram</font>
+																</a>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>			
+			</div>
+		</td>
+		<td></td>
+	</tr>
+</table>
+	<!-- /BODY -->
+
+	<!-- FOOTER -->
+	<table class="footer-wrap" >
+		<tr>
+			<td></td>
+			<td class="container" bgcolor="#2b2d2c">
+				<!-- content -->
+				<div class="content">
+					<table>
+						<tr>
+							<td align="center">
+								<p style="color:#fff">Thank you for shopping at <a href="http://www.mohtaram.com/" style="color:#fff;">Mohtaram</a>!</p>
+								<a href="http://www.mohtaram.com/" title="Mohtaram"><img src="http://www.mohtaram.com/image/catalog/logo.png" style="width:40px;height:auto;" alt="Mohtaram" /></a>
+								<br/><br/>
+								
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center" style="margin:0px;padding:10px;">
+								<a href="https://www.facebook.com/MohtaramCo/" target="_blank" ><img style="margin:6px;width:30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAwFBMVEUAAAA7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZg7WZiqgzS7AAAAP3RSTlMAAQMEDBARExcYGRobHB0xNDY4OUBERUZHSk9VVlhkbHBxdXeFkZKam52eqrTFx8jKzM7R09fZ2tze6evv9ffglK74AAAA90lEQVQoz33TazsCQRyG8XswKitSSw4lpyUhoTZhe77/t/Iimpn28Lyb+V1z/g+s0+g9plmWDnt18jlKtc6stYHRq4KMI19PlMux02sV5OpfuyrM3/h9lWS1/iTs/Lk9jeM4fpLGAO1Q77dWc15KagGfgT4bHM9gLxzcxGPV6YdswNwkSZJMJanHKGTAutaQeRWnLKs489l6r7AjSfr2J/d5dRsv/tZ8vpMkPfgHO7TWAsZau/slSTojqtpaDRbl/A50yrkN8FbGHwagWcaNfDF5fFFQio4H7hK6eT73C705CXl6sPFPOgvHs9iQS9QfzZfAds31/QKGO4iMm9PenAAAAABJRU5ErkJggg==" alt="Like us on Facebook" class="CToWUd"></a>
+								<a href="#" target="_blank" ><img style="margin:6px;width:30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAABSlBMVEUAAAAoq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9soq9un5Z8UAAAAbXRSTlMAAQIDBAUICQoLDA0ODxATFBYXGBocHh8gIiMkJicsLzAxNTY4OTw/QUNERkpNT1BRVFVWWV1fYmNmZ29wcXN0fIWJjI+Ul5udpqiqq7C0t7q+wMHFyMzO0dPV19na3uDk6Onr7e/x8/X3+fv9+SCExgAAAS5JREFUGBl1wecjAnEABuC3K6PISEbZe++ZvcueSYkiIrz//1f3G05X53nwJzAfS3+8JfbH/Sg3+EjLTSfs2pO0uQqgyCJLfY/Csk8HW9AidDQNqZv/CMPkyvAfSReAKQrX71RmKlC5/jy3SdMY4MpR8AcLFAagrNGUBUKUgLoUyTi0JgotiFByA66JB25AqclQWMYppV4IvlooB5SOkaHw4obNKaUnfFIyYPNCqYBXSpMo5qOSQ5zSdyOKzFK5xS6VDvwxslR2MELl3g3LErUheKmlQtDC/FUFnNN0Gd3uM6CEP6kdAWilacuAZqzQEoDphKb8atADeIKRHC2HEPwFOnqrhtRDR23QFuhgGJb+L5bIh1Ck/oI2MS/suu5oOWtGuYaZaLqQT+yNemH5AcP72+bkwrF+AAAAAElFTkSuQmCC" alt="Follow us on Twitter" class="CToWUd"></a>
+								<!-- <a href="https://www.linkedin.com/company/rozee-pk" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=en&amp;q=https://www.linkedin.com/company/rozee-pk&amp;source=gmail&amp;ust=1493969679875000&amp;usg=AFQjCNFkn2E4e445t3SItykJL_Xi-jO2gw"><img style="margin:6px;width:30px" src="https://ci4.googleusercontent.com/proxy/17CH042niQd7Mb0Dv09ZIsmNDhHaLoHQ4Z4b84ah8yB6dKqkfQ2-tqC4E-H1yTm28aXuyD0=s0-d-e1-ft#http://nl.rozee.pk/c/li.png?v=1" alt="Follow us on LinkedIn" class="CToWUd"></a>
+								<a href="https://www.youtube.com/channel/UCkk_nr_owMOb7VdEy0f2dxQ" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=en&amp;q=https://www.youtube.com/channel/UCkk_nr_owMOb7VdEy0f2dxQ&amp;source=gmail&amp;ust=1493969679875000&amp;usg=AFQjCNHckpX8TfMwwel1GyVSA8ofP2HwQg"><img style="margin:6px;width:30px" src="https://ci3.googleusercontent.com/proxy/fJ8RJelJ5pdpdPv16BBjX0ztHFIhW4W-M0Bf7yoMXjrpPpV_sBYZFgVKVd47voJV4VnJbBE=s0-d-e1-ft#http://nl.rozee.pk/c/yt.png?v=1" width="27" height="28" alt="Subscribe us on Youtube" class="CToWUd"></a>
+								 --><p style="color:#eee;"><small>© Mohtaram</small></p>
+								</td>
+						</tr>
+					</table>
+				</div><!-- /content -->
+					
+			</td>
+			<td></td>
+		</tr>
+	</table><!-- /FOOTER -->
+
+</body>
+</html>
